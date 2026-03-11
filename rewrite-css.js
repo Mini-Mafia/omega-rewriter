@@ -11,3 +11,9 @@ function rewrite_simple_imports(css) {
   let rewritten = css.replace(regex, (match, g1) => `import("${rewrite_url(g1)}")`);
   return rewritten;
 }
+
+export function rewrite_css(css) {
+  var rewritten = rewrite_css_urls(css);
+  rewritten = rewrite_simple_imports(rewritten);
+  return rewritten;
+}
